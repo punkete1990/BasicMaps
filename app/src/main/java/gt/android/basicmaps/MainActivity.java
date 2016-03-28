@@ -11,6 +11,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -46,15 +47,27 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .position(mapCenter)
                 .title("Palacio de la Cultura"));
 
+        // Polylines are useful for marking paths and routes on the map.
+        map.addPolyline(new PolylineOptions().geodesic(true)
+                .add(new LatLng(-33.866, 151.195))  // Sydney
+                .add(new LatLng(-18.142, 178.431))  // Fiji
+                .add(new LatLng(21.291, -157.821))  // Hawaii
+                .add(new LatLng(37.423, -122.091))  // Mountain View
+        );
+
         CameraPosition
                 cameraPosition = CameraPosition.builder()
                 .target(mapCenter)
                 .zoom(13)
                 .bearing(90)
+                .tilt(30)
                 .build();
 
         // Animate the change in camera view over 2 seconds
         map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition),
                 2000, null);
+
+
+
     }
 }
