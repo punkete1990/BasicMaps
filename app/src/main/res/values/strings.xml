@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BasicMaps</string>
+    <string name="google_maps_key">GOOGLE MAPS KEY</string>
+</resources>
